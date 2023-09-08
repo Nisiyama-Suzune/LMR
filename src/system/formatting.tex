@@ -1,0 +1,30 @@
+Faster \texttt{cin} and \texttt{cout}.
+\begin{lstlisting}
+std::ios::sync_with_stdio (0);
+std::cin.tie (0); std::cout.tie (0);
+\end{lstlisting}
+
+Examples on IO functions.
+\begin{lstlisting}
+std::string str;
+std::getline (std::cin, str, '#');
+char ch[100];
+std::cin.getline (ch, 100, '#');
+fgets (ch, 100, stdin);
+int c = std::cin.peek ();
+std::cin.ignore (100, '#');
+std::cin.ignore (100, EOF);
+std::cin.seekg (0, std::cin.end);
+int length = std::cin.tellg ();
+std::cin.seekg (0, std::cin.beg);
+char *buf = new char[length];
+std::cin.read (buf, length);
+std::cout << std::setw (10);
+std::cout << std::setfill ('#');
+std::cout << std::left << x << "\n";
+std::cout << std::internal << x << "\n";
+std::cout << std::right << x << "\n";
+std::cout << std::setprecision (10);
+std::cout << std::fixed; // std::cout << std::scientific;
+\end{lstlisting}
+

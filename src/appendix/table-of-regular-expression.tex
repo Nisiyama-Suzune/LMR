@@ -1,0 +1,150 @@
+\paragraph{Special pattern characters}
+\begin{center}
+	\begin{tabular}{|c|c|}
+		\hline
+		Characters			&	Description\\
+		\hline
+		\verb!.!			&	Not newline\\
+		\hline
+		\verb!\t!			&	Tab (HT)\\
+		\hline
+		\verb!\n!			&	Newline (LF)\\
+		\hline
+		\verb!\v!			&	Vertical tab (VT)\\
+		\hline
+		\verb!\f!			&	Form feed (FF)	\\
+		\hline
+		\verb!\r!			&	Carriage return (CR)\\
+		\hline
+		\verb!\cletter!		&	Control code	\\
+		\hline
+		\verb!\xhh!			&	ASCII character	\\
+		\hline
+		\verb!\uhhhh!		&	Unicode character\\
+		\hline
+		\verb!\0!			&	Null			\\
+		\hline
+		\verb!\int!			&	Backreference\\
+		\hline
+		\verb!\d!			&	Digit		\\
+		\hline
+		\verb!\D!			&	Not digit\\
+		\hline
+		\verb!\s!			&	Whitespace\\
+		\hline
+		\verb!\S!			&	Not whitespace\\
+		\hline
+		\verb!\w!			&	Word (letters, numbers and the underscore)\\
+		\hline
+		\verb!\W!			&	Not word\\
+		\hline
+		\verb!\character!	&	Character		\\
+		\hline
+		\verb![class]!		&	Character class\\
+		\hline
+		\verb![^class]!		&	Negated character class	\\
+		\hline
+	\end{tabular}
+\end{center}
+\paragraph{Quantifiers}
+\begin{center}
+	\begin{tabular}{|c|c|}
+		\hline
+		Characters			&	Times			\\
+		\hline
+		\verb!*!			&	0 or more			\\
+		\hline
+		\verb!+!			&	1 or more				\\
+		\hline
+		\verb!?!			&	0 or 1				\\
+		\hline
+		\verb!{int}!		&	\verb!int!		\\
+		\hline
+		\verb!{int,}!		&	\verb!int! or more				\\
+		\hline
+		\verb!{min,max}!	&	Between \verb!min! and \verb!max!	\\
+		\hline
+	\end{tabular}
+\end{center}
+
+By default, all these quantifiers are greedy (i.e., they take as many characters that meet the condition as possible). This behavior can be overridden to ungreedy (i.e., take as few characters that meet the condition as possible) by adding a question mark (\verb!?!) after the quantifier.
+
+\paragraph{Groups}
+\begin{center}
+	\begin{tabular}{|c|c|}
+		\hline
+		Characters				&	Description		\\
+		\hline
+		\verb!(subpattern)!		&	Group with backreference	\\
+		\hline
+		\verb!(?:subpattern)!	&	Group without backreference\\
+		\hline
+	\end{tabular}
+\end{center}
+\paragraph{Assertions}
+\begin{center}
+	\begin{tabular}{|c|c|}
+		\hline
+		Characters				&	Description			\\
+		\hline
+		\verb!^!				&	Beginning of line\\
+		\hline
+		\verb!$!				&	End of line		\\
+		\hline
+		\verb!\b!				&	Word boundary	\\
+		\hline
+		\verb!\B!				&	Not a word boundary	\\
+		\hline
+		\verb!(?=subpattern)!	&	Positive lookahead	\\
+		\hline
+		\verb|(?!subpattern)|	&	Negative lookahead	\\
+		\hline
+	\end{tabular}
+\end{center}
+\paragraph{Alternative}
+A regular expression can contain multiple alternative patterns simply by separating them with the separator operator (\verb!|!): The regular expression will match if any of the alternatives match, and as soon as one does.
+\paragraph{Character classes}
+\begin{center}
+	\begin{tabular}{|c|c|}
+		\hline
+		Class				&	Description							\\
+		\hline
+		\verb![:alnum:]!	&	Alpha-numerical character			\\
+		\hline
+		\verb![:alpha:]!	&	Alphabetic character			\\
+		\hline
+		\verb![:blank:]!	&	Blank character				\\
+		\hline
+		\verb![:cntrl:]!	&	Control character		\\
+		\hline
+		\verb![:digit:]!	&	Decimal digit character					\\
+		\hline
+		\verb![:graph:]!	&	Character with graphical representation\\
+		\hline
+		\verb![:lower:]!	&	Lowercase letter	\\
+		\hline
+		\verb![:print:]!	&	Printable character				\\
+		\hline
+		\verb![:punct:]!	&	Punctuation mark character	\\
+		\hline
+		\verb![:space:]!	&	Whitespace character	\\
+		\hline
+		\verb![:upper:]!	&	Uppercase letter	\\
+		\hline
+		\verb![:xdigit:]!	&	Hexadecimal digit character\\
+		\hline
+		\verb![:d:]!		&	Decimal digit character	\\
+		\hline
+		\verb![:w:]!		&	Word character		\\
+		\hline
+		\verb![:s:]!		&	Whitespace character\\
+		\hline
+	\end{tabular}
+\end{center}
+Please note that the brackets in the class names are additional to those opening and closing the class definition. For example:
+
+\verb![[:alpha:]]! is a character class that matches any alphabetic character.
+
+\verb![abc[:digit:]]! is a character class that matches a, b, c, or a digit.
+
+\verb![^[:space:]]! is a character class that matches any character except a whitespace.

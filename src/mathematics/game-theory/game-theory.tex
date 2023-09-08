@@ -1,0 +1,112 @@
+\paragraph{Nim}
+For simplicity, we denote $a_i$ as the number of stones in the $i$-th pile, $M_i(S)$ as removing stones with the amount chosen in the set $S$ from the $i$-th pile, and $M_i=M_i[1,a_i]$. Without further explanation, it is assumed that the SG function of a game $SG=\bigoplus_{i=1}^nSG(a_i)$.
+
+\subparagraph{Nim}
+$M=\bigcup_{i=1}^nM_i$.
+
+Normal: $SG(n)=n$.
+
+Misere: The same, opposite if all piles are $1$'s.
+
+\subparagraph{Nim (powers)}
+Given $k$, $M=\bigcup_{i=1}^nM_i\{k^m|m\ge 0\}$.
+
+Normal: If $k$ is odd, $SG(n)=n\%2$. Otherwise,
+
+$$SG(n)=\biggl\{\begin{array}{lr}
+2 & n\%(k+1)=k \\
+n\%(k+1)\%2 & \mathrm{otherwise}\,.\end{array}$$
+
+\subparagraph{Nim (no greater than half)}
+$M=\bigcup_{i=1}^nM_i[1,\frac{a_i}{2}]$.
+
+Normal: $SG(2n)=n,SG(2n+1)=SG(n)$.
+
+\subparagraph{Nim (always greater than half)}
+$M=\bigcup_{i=1}^nM_i[\left\lceil \frac{a_i}{2}\right\rceil, a_i]$.
+
+Normal: $SG(0)=0,SG(n)=\left\lfloor \log_2 n\right\rfloor +1$.
+
+\subparagraph{Nim (proper divisors)}
+$M=\bigcup_{i=1}^nM_i\{x|x>1\wedge a_i\% x=0\}$.
+
+Normal: $SG(1)=0,SG(n)=\max_x(n\%2^x=0)$.
+
+\subparagraph{Nim (divisors)}
+$M=\bigcup_{i=1}^nM_i\{x|a_i\% x=0\}$.
+
+Normal: $SG(0)=0,SG(n)=1+\max_x(n\%2^x=0)$.
+
+\subparagraph{Nim (fixed)}
+Given a finite set $S$, $M=\bigcup_{i=1}^nM_i(S)$.
+
+Normal: $SG_1(n)$ is eventually periodic.
+
+Given a finite set $S$, $M=\bigcup_{i=1}^nM_i(S\cup {a_i})$.
+
+Normal: $SG_2(n)=SG_1(n)+1$.
+
+\subparagraph{Moore's Nim}
+Given $k$, $M=\bigcup\{M_{x_1}\times M_{x_2} \dots\times M_{x_l}|l\le k \wedge\forall i(x_i<x_{i+1})\}$.
+
+Normal: Sum all $(a_i)_2$ in base $k+1$ without carry. Lose if the result is $0$.
+
+Misere: The same, except if all piles are $1$'s.
+
+\subparagraph{Staircase Nim}
+One can take any number of objects from $a_{i+1}$ to $a_i$($i\ge 0$).
+
+Normal: Lose if $\bigoplus_{i=0}^{(n-1)/2}a_{2i+1}=0$.
+
+\subparagraph{Lasker's Nim}
+$M=\bigcup_{i=1}^nM_i\cup S_i$. ($S_i$: Split a pile into two non-empty piles.)
+
+Normal: $SG(n)=\biggl\{\begin{array}{lr}
+n & n\%4=1,2\\
+n+1 & n\%4=3\\
+n-1 & n\%4=0\,.\end{array}$
+
+\subparagraph{Kayles}
+$M=\bigcup_{i=1}^nM_i[1,2]\cup MS_i[1,2]$. ($MS_i$: Split a pile into two non-empty piles after removing stones.)
+
+Normal: Periodic from the $72$-th item with period length $12$.
+
+\subparagraph{Dawson's chess}
+$n$ stones in a line. One can take a stone if its neighbours are not taken.
+
+Normal: Periodic from the $52$-th item with period length $34$.
+
+\paragraph{Ferguson game}
+Two boxes with $m$ stones and $n$ stones. One can empty any one box and move any positive number of stones from another box to this box each step.
+
+Normal: Lose if both $m$ and $n$ are odd.
+
+\paragraph{Fibonacci game}
+$n$ stones. The first player may take any positive number of stones during the first move, but not all of them. After that, each player may take any positive number of stones, but less than twice the number of stones taken during the last turn.
+
+Normal: Win if $n$ is not a fibonacci number.
+
+\paragraph{Wythoff's game}
+Two piles of stones. Players take turns removing stones from one or both piles; when removing stones from both piles, the numbers of stones removed from each pile must be equal.
+
+Normal: Lose if $\lfloor \frac{\sqrt{5}+1}{2}|A-B| \rfloor=\min(A,B)$
+
+\paragraph{Mock turtles}
+$n$ coins in a line. One can turn over any $1$, $2$, or $3$ coins, but the rightmost coin turned must be from head to tail.
+
+Normal: $SG(n)=2n+[\operatorname{popcount}(n)\mathrm{\ is\ even}]$.
+
+\paragraph{Ruler}
+$n$ coins in a line. One can turn over any consecutive coins, but the rightmost coin turned must be from head to tail.
+
+Normal: $SG(n)=\operatorname{lowbit}(n)$.
+
+\paragraph{Hackenbush}
+The game starts with the players drawing a ground line (conventionally, but not necessarily, a horizontal line at the bottom of the paper or other playing area) and several line segments such that each line segment is connected to the ground, either directly at an endpoint, or indirectly, via a chain of other segments connected by endpoints. Any number of segments may meet at a point and thus there may be multiple paths to ground.
+
+On his turn, a player cuts (erases) any line segment of his choice. Every line segment no longer connected to the ground by any path falls (i.e., gets erased). According to the normal play convention of combinatorial game theory, the first player who is unable to move loses.
+
+Played exclusively with vertical stacks of line segments, also referred to as bamboo stalks, the game directly becomes Nim and can be directly analyzed as such. Divergent segments, or trees, add an additional wrinkle to the game and require use of the colon principle stating that when branches come together at a vertex, one may replace the branches by a non-branching stalk of length equal to their nim sum. This principle changes the representation of the game to the more basic version of the bamboo stalks. The last possible set of graphs that can be made are convergent ones, also known as arbitrarily rooted graphs. By using the fusion principle, we can state that all vertices on any cycle may be fused together without changing the value of the graph. Therefore, any convergent graph can also be interpreted as a simple bamboo stalk graph. By combining all three types of graphs we can add complexity to the game, without ever changing the Nim sum of the game, thereby allowing the game to take the strategies of Nim.
+
+\paragraph{Joseph cycle}
+$n$ players are numbered with $0,1,2,...,n-1$. $f_{1,m}=0,f_{n,m}=(f_{n-1,m}+m)\mod n$.

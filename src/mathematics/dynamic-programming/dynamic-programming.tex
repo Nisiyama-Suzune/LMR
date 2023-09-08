@@ -1,0 +1,37 @@
+\paragraph{Divide \& conquer optimization}
+	For recurrence
+	$$f(i) = \min_{k<i}\{b(k)+c[k][i]\}$$
+	$k(i) \leq k(i+1)$ holds true if $c[a][c]+c[b][d]<c[a][d]+c[b][c]$.
+
+	\subparagraph{LBN technique}
+	Implement the optimization in $O(n\log^2n)$.
+	\begin{algorithmic}
+		\Function{update}{$l,r,a,b$}
+			\Comment{update $f[l\cdots r]$ with $f[a\cdots b]$}
+			\If {$l\le r$}
+				\State $m\gets (l+r)/2$
+				\State $newk\gets\arg_i\min_{a\le i \le b}f[i]+cost(i,m)$
+				\State $newf\gets f[u]+cost(u,m)$
+				\If{$newf < f[m]$}
+					\State $f[m]\gets newf$
+					\State $k[m]\gets newk$
+					\State \Call{update}{$l,m-1,a,newk$}
+				\EndIf
+				\State \Call{update}{$m+1,r,newk,b$}
+			\EndIf
+		\EndFunction
+		\Function{solve}{$l,r$}
+			\Comment{compute $f[l\cdots r]$}
+			\If {$l<r$}
+				\State $m\gets (l+r)/2$
+				\State \Call{solve}{$l,m$}
+				\State \Call{update}{$m+1,r,\max(l,k[m]),m$}
+				\State \Call{solve}{$m+1,r$}
+			\EndIf
+		\EndFunction
+	\end{algorithmic}
+
+\paragraph{Knuth optimization}
+	For recurrence
+	$$f(i,j) = \min_{i<k<j}\{f(i,k)+f(k,j)\}+c[i][j]$$
+	$k(i,j-1) \leq k(i,j) \leq k(i+1,j)$ holds true if $c[a][c]+c[b][d]<c[a][d]+c[b][c]$.

@@ -1,0 +1,28 @@
+In mathematics and computational geometry, a Delaunay triangulation (also known as a Delone triangulation) for a given set $P$ of discrete points in a plane is a triangulation $DT(P)$ such that no point in $P$ is inside the circumcircle of any triangle in $DT(P)$. Delaunay triangulations maximize the minimum angle of all the angles of the triangles in the triangulation; they tend to avoid sliver triangles.
+
+The Delaunay triangulation of a discrete point set $P$ in general position corresponds to the dual graph of the Voronoi diagram for $P$. Special cases include the existence of three points on a line and four points on circle.
+
+Properties: Let n be the number of points.
+\begin{enumerate}
+\item The union of all triangles in the triangulation is the convex hull of the points.
+\item The Delaunay triangulation contains $O(n)$ triangles.
+\item If there are $b$ vertices on the convex hull, then any triangulation of the points has at most $2n-2-b$ triangles, plus one exterior face.
+\item If points are distributed according to a Poisson process in the plane with constant intensity, then each vertex has on average six surrounding triangles.
+\item In the plane, the Delaunay triangulation maximizes the minimum angle. Compared to any other triangulation of the points, the smallest angle in the Delaunay triangulation is at least as large as the smallest angle in any other. However, the Delaunay triangulation does not necessarily minimize the maximum angle. The Delaunay triangulation also does not necessarily minimize the length of the edges.
+\item A circle circumscribing any Delaunay triangle does not contain any other input points in its interior.
+\item If a circle passing through two of the input points doesn't contain any other of them in its interior, then the segment connecting the two points is an edge of a Delaunay triangulation of the given points.
+\item Each triangle of the Delaunay triangulation of a set of points in $d$-dimensional spaces corresponds to a facet of convex hull of the projection of the points onto a $(d+1)$-dimensional paraboloid, and vice versa.
+\item The closest neighbor $b$ to any point $p$ is on an edge $bp$ in the Delaunay triangulation since the nearest neighbor graph is a subgraph of the Delaunay triangulation.
+\item The Delaunay triangulation is a geometric spanner: the shortest path between two vertices, along Delaunay edges, is known to be no longer than ${\frac {4\pi }{3{\sqrt {3}}}}\approx 2.418$ times the Euclidean distance between them.
+\item The Euclidean minimum spanning tree of a set of points is a subset of the Delaunay triangulation of the same points, and this can be exploited to compute it efficiently.
+\end{enumerate}
+
+Usage:
+\begin{enumerate}
+\item Initialize the coordinate range with \texttt{trig::LOTS}.
+\item \texttt{trig::find}: Find the triangle that contains the given point.
+\item \texttt{trig::add\_point}: Add the point to the triangulation.
+\item One certain triangle is in the triangulation if \texttt{tri::has\_child () == 0}.
+\item To find the neighbouring triangles of \texttt{u}, check \texttt{u.e[i].tri}, with vertice of the corresponding edge \texttt{u.p[(i + 1) \% 3]} and \texttt{u.p[(i + 2) \% 3]}.
+\end{enumerate}
+\lstinputlisting{src/geometry/2d-geometry/delaunay-triangulation.cpp}

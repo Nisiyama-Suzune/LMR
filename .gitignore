@@ -1,0 +1,15 @@
+ref/**
+
+*.aux
+*.log
+*.toc
+*.fdb_latexmk
+*.fls
+*.gz
+*.xdv
+
+*.swp
+
+*.in
+*.out
+*.exe

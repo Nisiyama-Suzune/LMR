@@ -1,0 +1,36 @@
+A $k$-ary Lyndon word of length $n > 0$ is an $n$-character string over an alphabet of size $k$, and which is the unique minimum element in the lexicographical ordering of all its rotations. Being the singularly smallest rotation implies that a Lyndon word differs from any of its non-trivial rotations, and is therefore aperiodic.
+
+Alternately, a Lyndon word has the property that it is nonempty and, whenever it is split into two nonempty substrings, the left substring is always lexicographically less than the right substring. That is, if $w$ is a Lyndon word, and $w = uv$ is any factorization into two substrings, with $u$ and $v$ understood to be non-empty, then $u < v$. This definition implies that a string $w$ of length $\ge 2$ is a Lyndon word if and only if there exist Lyndon words $u$ and $v$ such that $u < v$ and $w = uv$. Although there may be more than one choice of $u$ and $v$ with this property, there is a particular choice, called the standard factorization, in which $v$ is as long as possible.
+
+Lyndon words correspond to aperiodic necklace class representatives and can thus be counted with Moreau's necklace-counting function.
+
+Duval provides an efficient algorithm for listing the Lyndon words of length at most $n$ with a given alphabet size $s$ in lexicographic order. If $w$ is one of the words in the sequence, then the next word after $w$ can be found by the following steps:
+
+\begin{enumerate}
+\item Repeat the symbols from $w$ to form a new word $x$ of length exactly $n$, where the $i$th symbol of $x$ is the same as the symbol at position ($i$ mod $length(w)$) of $w$.
+\item As long as the final symbol of $x$ is the last symbol in the sorted ordering of the alphabet, remove it, producing a shorter word.
+\item Replace the final remaining symbol of $x$ by its successor in the sorted ordering of the alphabet.
+\end{enumerate}
+
+The sequence of all Lyndon words of length at most $n$ can be generated in time proportional to the length of the sequence.
+
+According to the Chen-Fox-Lyndon theorem, every string may be formed in a unique way by concatenating a sequence of Lyndon words, in such a way that the words in the sequence are nonincreasing lexicographically. The final Lyndon word in this sequence is the lexicographically smallest suffix of the given string. A factorization into a nonincreasing sequence of Lyndon words (the so-called Lyndon factorization) can be constructed in linear time.
+
+Given a string $S$ of length $N$, one should proceed with the following steps:
+
+\begin{enumerate}
+\item Let $m$ be the index of the symbol-candidate to be appended to the already collected symbols. Initially, $m = 1$ (indices of symbols in a string start from zero).
+\item Let $k$ be the index of the symbol we would compare others to. Initially, $k = 0$.
+\item While $k$ and $m$ are less than $N$, compare $S[k]$ (the $k$-th symbol of the string $S$) to $S[m]$. There are three possible outcomes:
+\begin{enumerate}
+\item $S[k]$ is equal to $S[m]$: append $S[m]$ to the current collected symbols. Increment $k$ and $m$.
+\item $S[k]$ is less than $S[m]$: if we append $S[m]$ to the current collected symbols, we'll get a Lyndon word. But we can't add it to the result list yet because it may be just a part of a larger Lyndon word. Thus, just increment $m$ and set $k$ to $0$ so the next symbol would be compared to the first one in the string.
+\item $S[k]$ is greater than $S[m]$: if we append $S[m]$ to the current collected symbols, it will be neither a Lyndon word nor a possible beginning of one. Thus, add the first $m-k$ collected symbols to the result list, remove them from the string, set $m$ to $1$ and $k$ to $0$ so that they point to the second and the first symbol of the string respectively.
+\end{enumerate}
+\item When $m > N$, it is essentially the same as encountering minus infinity, thus, add the first $m-k$ collected symbols to the result list after removing them from the string, set $m$ to $1$ and $k$ to $0$, and return to the previous step.
+\item Add $S$ to the result list.
+\end{enumerate}
+
+If one concatenates together, in lexicographic order, all the Lyndon words that have length dividing a given number $n$, the result is a de Bruijn sequence, a circular sequence of symbols such that each possible length-$n$ sequence appears exactly once as one of its contiguous subsequences.
+
+\lstinputlisting{src/string/decomposition/lyndon-word.cpp}

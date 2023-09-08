@@ -1,0 +1,6 @@
+Find the recursive equation with the first elements of the sequence in $O(n^2)$.
+
+Sample input: $\{1, 1, 2, 3\}$.
+
+Sample output: $\{1, 1000000006, 1000000006\}\mod 10^9+7$, i.e. $a_i-a_{i-1}-a_{i-2}=0$.
+\lstinputlisting{src/mathematics/recurrence-relation/berlekamp-massey-algorithm.cpp}

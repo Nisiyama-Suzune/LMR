@@ -1,0 +1,21 @@
+Let $G$ be a locally finite directed acyclic graph. This means that each vertex has finite degree, and that $G$ contains no directed cycles. Consider base vertices $A = \{ a_1, \ldots, a_n \}$ and destination vertices $B = \{ b_1, \ldots, b_n \}$, and also assign a weight $\omega_{e}$ to each directed edge $e$. These edge weights are assumed to belong to some commutative ring. For each directed path $P$ between two vertices, let $ \omega(P) $ be the product of the weights of the edges of the path. For any two vertices $a$ and $b$, write $e(a,b)$ for the sum $e(a,b) = \sum_{P: a \to b} \omega(P)$ over all paths from $a$ to $b$.
+
+With this setup, write:
+$$M = \begin{pmatrix} e(a_1,b_1) & e(a_1,b_2) & \cdots & e(a_1,b_n) \\ e(a_2,b_1) & e(a_2,b_2) & \cdots & e(a_2,b_n) \\ \vdots & \vdots & \ddots & \vdots \\ e(a_n,b_1) & e(a_n,b_2) & \cdots & e(a_n,b_n) \end{pmatrix}\,.$$
+
+An $n$-tuple of non-intersecting paths from $A$ to $B$ means an $n$-tuple $(P_1, \ldots, P_n)$ of paths in $G$ with the following properties:
+
+\begin{enumerate}
+\item There exists a permutation $\sigma$ of $\left\{ 1, 2, ..., n \right\}$ such that, for every $i$, the path $P_i$ is a path from $a_i$ to $b_{\sigma(i)}$.
+\item Whenever $i \neq j$, the paths $P_i$ and $P_j$ have no two vertices in common (not even endpoints).
+\end{enumerate}
+
+Given such an $n$-tuple $(P_1, \ldots, P_n)$, we denote by $\sigma(P)$ the permutation of $\sigma$ from the first condition.
+
+The Lindström-Gessel-Viennot lemma then states that the determinant of $M$ is the signed sum over all $n$-tuples $P = (P_1, \ldots, P_n)$ of non-intersecting paths from $A$ to $B$:
+
+$$\det(M) = \sum_{(P_1,\ldots,P_n) \colon A \to B} \mathrm{sign}(\sigma(P)) \prod_{i=1}^n \omega(P_i)\,.$$
+
+That is, the determinant of $M$ counts the weights of all $n$-tuples of non-intersecting paths starting at $A$ and ending at $B$, each affected with the sign of the corresponding permutation of $(1,2,\ldots,n)$, given by $ P_i $ taking $ a_i $ to $ b_{\sigma(i)} $.
+
+In particular, if the only permutation possible is the identity (i.e., every $n$-tuple of non-intersecting paths from $A$ to $B$ takes $a_i$ to $b_i$ for each $i$) and we take the weights to be 1, then $\det(M)$ is exactly the number of non-intersecting $n$-tuples of paths starting at $A$ and ending at $B$.

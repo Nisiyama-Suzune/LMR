@@ -1,0 +1,114 @@
+\paragraph{Binomial coefficients}
+\[ {n \choose k} = (-1)^k{k-n-1 \choose k},\ \ \sum_{k \leq n}{r+k \choose k} = {r+n+1 \choose n} \]
+\[ \sum_{k=0}^n{k \choose m} = {n+1 \choose m+1} \]
+\[ \sqrt{1+z} = 1 + \sum_{k=1}^{\infty}\frac{(-1)^{k-1}}{k\times2^{2k-1}}{2k-2 \choose k-1}z^k \]
+\[ \sum_{k=0}^{r}{r-k \choose m}{s+k \choose n} = {r+s+1 \choose m+n+1} \]
+\[ C_{n, m} = {n+m \choose m} - {n+m \choose m-1}, n \geq m \]
+\[ {n \choose k} \equiv [n\& k=k] \pmod 2 \]
+\[ {{n_1+\cdots+n_p}\choose m}=\sum_{k_1+\cdots+k_p=m}{n_1\choose k_1}\cdots{n_p\choose k_p}\]
+\paragraph{Fibonacci numbers}
+\[ F(z) = \frac{z}{1-z-z^2} \]
+\[ f_n = \frac{{\phi}^n-{\hat{\phi}}^n}{\sqrt{5}}, \phi = \frac{1+\sqrt{5}}{2},
+\hat{\phi} = \frac{1-\sqrt{5}}{2} \]
+\[ \sum_{k=1}^nf_k = f_{n+2}-1,\ \ \sum_{k=1}^nf^2_k = f_nf_{n+1} \]
+\[ \sum_{k=0}^nf_kf_{n-k} = \frac{1}{5}(n-1)f_n+\frac{2}{5}nf_{n-1} \]
+\[ \frac{f_{2n}}{f_n} = f_{n-1} + f_{n+1}\]
+\[ f_1+2f_2+3f_3+\cdots+nf_n=nf_{n+2}-f_{n+3}+2]\]
+\[ \gcd(f_m,f_n)=f_{\gcd(m,n)}\]
+\[ f^2_n + (-1)^n = f_{n+1}f_{n-1} \]
+\[ f_{n+k} = f_nf_{k+1} + f_{n-1}f_k \]
+\[ f_{2n+1} = f^2_n+f^2_{n+1} \]
+\[ (-1)^kf_{n-k} = f_{n}f_{k-1} - f_{n-1}f_{k} \]
+\[ \text{Modulo }f_n, f_{mn+r} \equiv \left\{
+\begin{aligned}
+&f_r,& m \bmod 4 = 0; \\
+&(-1)^{r+1}f_{n-r},& m \bmod 4 = 1; \\
+&(-1)^nf_r,& m \bmod 4 = 2; \\
+&(-1)^{r+1+n}f_{n-r},& m \bmod 4 = 3.
+\end{aligned}
+\right.
+\]
+
+Period modulo a prime $p$ is a factor of $2p+2$ or $p-1$.
+
+Only exception: $G(5)=20$.
+
+Period modulo the power of a prime $p^k$: $G(p^k)=G(p)p^{k-1}$.
+
+Period modulo $n=p_1^{k_1}...p_m^{k_m}$: $G(n)=lcm(G(p_1^{k_1}),...,G(p_m^{k_m}))$.
+
+\paragraph{Lucas numbers}
+\[ L_0=2,L_1=1,L_n=L_{n-1}+L_{n-2}=(\frac{1+\sqrt{5}}{2})^n+\frac{1-\sqrt{5}}{2})^n \]
+\[ L(x)=\frac{2-x}{1-x-x^2} \]
+\paragraph{Catlan numbers}
+\begin{align*}
+c_1=1,c_n=\sum_{i=0}^{n-1}c_ic_{n-1-i}=c_{n-1}\frac{4n-2}{n+1}=\frac{\binom{2n}{n}}{n+1}\\
+=\binom{2n}{n}-\binom{2n}{n-1}, c(x)=\frac{1-\sqrt{1-4x}}{2x}
+\end{align*}
+\paragraph{Stirling cycle numbers}
+Divide $n$ elements into $k$ non-empty cycles.
+\[s(n,0)=0,s(n,n)=1,s(n+1,k)=s(n,k-1)-ns(n,k)\]
+\[s(n,k)=(-1)^{n-k}{n \brack k}\]
+\[{n+1 \brack k} = n{n \brack k} + {n \brack k-1},{n+1 \brack 2} = n!H_n\]
+ \begin{align*}
+x^{\underline{n}} = x(x-1)...(x-n+1) &= \sum_{k=0}^n{ {n \brack k}(-1)^{n-k}x^k }\\
+x^{\overline{n}} = x(x+1)...(x+n-1) &= \sum_{k=0}^n{ {n \brack k}x^k }\\
+ \end{align*}
+\paragraph{Stirling subset numbers}
+Divide $n$ elements into $k$ non-empty subsets.
+\[ {n+1 \brace k} = k{n \brace k} + {n \brace k-1} \]
+\[ x^n = \sum_{k=0}^n{ {n \brace k}x^{\underline{k}} } = \sum_{k=0}^n{ {n \brace k}(-1)^{n-k}x^{\overline{k}} } \]
+\[ m!{n \brace m} = \sum_{k=0}^m{m \choose k}k^n(-1)^{m-k} \]
+\[ \sum_{k=1}^nk^p = \sum_{k=0}^p{p \brace k}(n+1)^{\underline{k}} \]
+For a fixed $k$, generating functions :
+\[\sum_{n=0}^{\infty}{n \brace k}x^{n-k}=\prod_{r=1}^{k}\frac{1}{1-rx}\]
+\paragraph{Motzkin numbers}
+Draw non-intersecting chords between n points on a circle.
+
+Pick $n$ numbers $k_1,k_2,...,k_n\in\{-1,0,1\}$ so that $\sum_i^ak_i(1\leq a\leq n)$ is non-negative and the sum of all numbers is $0$.
+\[M_{n+1}=M_n+\sum_i^{n-1}M_iM_{n-1-i}=\frac{(2n+3)M_n+3nM_{n-1}}{n+3}\]
+\[M_n=\sum_{i=0}^{\lfloor \frac{n}{2}\rfloor}\binom{n}{2k}Catlan(k)\]
+\[M(X)=\frac{1-x-\sqrt{1-2x-3x^2}}{2x^2}\]
+\paragraph{Eulerian numbers}
+Permutations of the numbers $1$ to $n$ in which exactly $k$ elements are greater than the previous element.
+\[ {n \bangle k} = (k+1){n-1 \bangle k} + (n-k){n-1 \bangle k-1} \]
+\[ x^n = \sum_k{ {n \bangle k}{x+k \choose n} } \]
+\[ {n \bangle m} = \sum_{k=0}^m{n+1 \choose k}(m+1-k)^n(-1)^k \]
+\paragraph{Harmonic numbers}
+Sum of the reciprocals of the first n natural numbers.
+\[ \sum_{k=1}^nH_k = (n+1)H_n-n \]
+\[ \sum_{k=1}^nkH_k = \frac{n(n+1)}{2}H_n - \frac{n(n-1)}{4} \]
+\[ \sum_{k=1}^n{k \choose m}H_k = {n+1 \choose m+1}(H_{n+1} - \frac{1}{m+1}) \]
+\paragraph{Pentagonal number theorem}
+\[ \prod_{n=1}^{\infty}(1-x^n) = \sum_{n=-\infty}^{\infty}{(-1)^kx^{k(3k-1)/2}} \]
+\[ p(n) = p(n-1)+p(n-2)-p(n-5)-p(n-7)+\cdots \]
+\[ f(n, k) = p(n)-p(n-k)-p(n-2k)+p(n-5k)+p(n-7k)-\cdots \]
+\paragraph{Bell numbers}
+Divide a set that has exactly n elements.
+\[ B_n=\sum_{k=1}^{n}{n\brace k},\ \ B_{n+1} = \sum_{k=0}^n{n \choose k}B_k \]
+\[ B_{p^m+n} \equiv mB_n+B_{n+1} \pmod{p} \]
+\[B(x)=\sum_{n=0}^{\infty}\frac{B_n}{n!}x^n=\mathrm{e}^{\mathrm{e}^x-1}\]
+\paragraph{Bernoulli numbers}
+\[ B_n = 1 - \sum_{k=0}^{n-1}{n \choose k}\frac{B_k}{n-k+1} \]
+\[ G(x) = \sum_{k=0}^{\infty}\frac{B_k}{k!}x^k
+= \frac{1}{\sum_{k=0}^{\infty}\frac{x^k}{(k+1)!}} \]
+\[ \sum_{k=1}^nk^m = \frac{1}{m+1}\sum_{k=0}^m{m+1 \choose k}B_kn^{m-k+1} \]
+\paragraph{Sum of powers}
+\[\sum_{i=1}^ni^2=\frac{n(n+1)(2n+1)}{6},\ \ \sum_{i=1}^ni^3=(\frac{n(n+1)}{2})^2\]
+\[\sum_{i=1}^ni^4=\frac{n(n+1)(2n+1)(3n^2+3n-1)}{30}\]
+\[\sum_{i=1}^ni^5=\frac{n^2(n+1)^2(2n^2+2n-1)}{12}\]
+\paragraph{Sum of squares}
+Denote $r_k(n)$ the ways to form $n$ with $k$ squares. If :
+\[n=2^{a_0}p_1^{2a_1}\cdots p_r^{2a_r}q_1{b_1}\cdots q_s{b_s}\]
+where $p_i\equiv 3 \mod 4$, $q_i\equiv 1 \mod 4$, then
+\[r_2(n)=\left\{\begin{aligned}
+& 0 & \text{if any }a_i\text{ is a half-integer}\\
+& 4\prod_1^r(b_i+1) & \text{if all }a_i\text{ are integers}\\
+\end{aligned}\right.\]
+$r_3(n)>0$ when and only when $n$ is not $4^a(8b+7)$.
+\paragraph{Derangement}
+\[D_1=0,D_2=1,D_n=n!(\frac{1}{0!}-\frac{1}{1!}+\frac{1}{2!}-\frac{1}{3!}+...+\frac{(-1)^n}{n!})\]
+\[D_n=(n-1)(D_{n-1}+D_{n-2})\]
+\paragraph{Tetrahedron volume}
+If $U$, $V$, $W$, $u$, $v$, $w$ are lengths of edges of the tetrahedron (first three form a triangle; u opposite to U and so on)
+\[ V = \frac{\sqrt{ 4u^2v^2w^2 - \sum_{cyc}{u^2(v^2+w^2-U^2)^2} + \prod_{cyc}{(v^2+w^2-U^2)} }}{12} \]

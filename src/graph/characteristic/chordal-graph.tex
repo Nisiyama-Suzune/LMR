@@ -1,0 +1,17 @@
+A chordal graph is one in which all cycles of four or more vertices have a chord, which is an edge that is not part of the cycle but connects two vertices of the cycle.
+
+A perfect elimination ordering in a graph is an ordering of the vertices of the graph such that, for each vertex $v$, $v$ and the neighbors of $v$ that occur after $v$ in the order form a clique. A graph is chordal if and only if it has a perfect elimination ordering. One application of perfect elimination orderings is finding a maximum clique of a chordal graph in polynomial-time, while the same problem for general graphs is NP-complete. More generally, a chordal graph can have only linearly many maximal cliques, while non-chordal graphs may have exponentially many. To list all maximal cliques of a chordal graph, simply find a perfect elimination ordering, form a clique for each vertex $v$ together with the neighbors of $v$ that are later than $v$ in the perfect elimination ordering, and test whether each of the resulting cliques is maximal.
+
+The largest maximal clique is a maximum clique, and, as chordal graphs are perfect, the size of this clique equals the chromatic number of the chordal graph. Chordal graphs are perfectly orderable: an optimal coloring may be obtained by applying a greedy coloring algorithm to the vertices in the reverse of a perfect elimination ordering.
+
+In any graph, a vertex separator is a set of vertices the removal of which leaves the remaining graph disconnected; a separator is minimal if it has no proper subset that is also a separator. Chordal graphs are graphs in which each minimal separator is a clique.
+
+Usage:
+\begin{enumerate}
+  \item Set \texttt{n} and \texttt{e}.
+  \item Call \texttt{init} to obtain the perfect elimination ordering in \texttt{seq}.
+  \item Use \texttt{is\_chordal} to test whether the graph is chordal.
+  \item Use \texttt{min\_color} to obtain the size of the maximum clique (and the chromatic number).
+\end{enumerate}
+
+\lstinputlisting{src/graph/characteristic/chordal-graph.cpp}

@@ -1,0 +1,9 @@
+
+In combinatorial mathematics, the Prufer sequence of a labeled tree is a unique sequence associated with the tree. The sequence for a tree on $n$ vertices has length $n-2$.
+
+One can generate a labeled tree's Prufer sequence by iteratively removing vertices from the tree until only two vertices remain. Specifically, consider a labeled tree $T$ with vertices ${1, 2, ..., n}$. At step $i$, remove the leaf with the smallest label and set the $i$th element of the Prufer sequence to be the label of this leaf's neighbour.
+
+One can generate a labeled tree from a sequence in three steps. The tree will have $n+2$ nodes, numbered from $1$ to $n+2$. For each node set its degree to the number of times it appears in the sequence plus $1$. Next, for each number in the sequence $a[i]$, find the first (lowest-numbered) node, $j$, with degree equal to $1$, add the edge $(j, a[i])$ to the tree, and decrement the degrees of $j$ and $a[i]$. At the end of this loop two nodes with degree $1$ will remain (call them $u$, $v$). Lastly, add the edge $(u,v)$ to the tree.
+
+The Prufer sequence of a labeled tree on $n$ vertices is a unique sequence of length $n-2$ on the labels $1$ to $n$ - this much is clear. Somewhat less obvious is the fact that for a given sequence $S$ of length $n-2$ on the labels $1$ to $n$, there is a unique labeled tree whose Prufer sequence is $S$.
+

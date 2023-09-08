@@ -1,0 +1,10 @@
+Find the maximum clique $(n\le 150)$.
+
+Example:
+\begin{lstlisting}
+BB e[N]; int ans, sol[N]; for (...) e[x][y] = e[y][x] = true;
+max_clique mc (e, n); mc.mcqdyn (sol, ans);	//0-based.
+for (int i = 0; i < ans; ++i) std::cout << sol[i] << std::endl;
+\end{lstlisting}
+\lstinputlisting{src/graph/clique/dn-maximum-clique.cpp}
+

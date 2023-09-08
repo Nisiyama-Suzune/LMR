@@ -1,0 +1,58 @@
+\begin{center}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		Precedence			&	Operator					&	Associativity					\\
+		\hline
+		1					&	\ttfamily ::				&	\multirow{6}{*}{Left-to-right}	\\
+		\cline{1-2}
+		\multirow{5}{*}{2}	&	\ttfamily a++ a--			&									\\
+							&	\ttfamily type() type\{\}	&									\\
+							&	\ttfamily a()				&									\\
+							&	\ttfamily a[]				&									\\
+							&	\ttfamily . ->				&									\\
+		\hline	
+		\multirow{9}{*}{3}	&	\ttfamily ++a --a			&	\multirow{9}{*}{Right-to-left}	\\
+							&	\ttfamily +a -a				&									\\
+							&	\ttfamily ! \~				&									\\
+							&	\ttfamily (type)			&									\\
+							&	\ttfamily *a				&									\\
+							&	\ttfamily \&a				&									\\
+							&	\ttfamily sizeof			&									\\
+							&	\ttfamily new new[]			&									\\
+							&	\ttfamily delete delete[]	&									\\
+		\hline
+		4					&	\ttfamily .* ->*			&	\multirow{12}{*}{Left-to-right}	\\
+		\cline{1-2}
+		5					&	\ttfamily a*b a/b a\%b		&									\\
+		\cline{1-2}
+		6					&	\ttfamily a+b a-b			&									\\
+		\cline{1-2}
+		7					&	\ttfamily << >>				&									\\
+		\cline{1-2}
+		\multirow{2}{*}{8}	&	\ttfamily < <=				&									\\
+							&	\ttfamily > >=				&									\\
+		\cline{1-2}
+		9					&	\ttfamily == !=				&									\\
+		\cline{1-2}
+		10					&	\ttfamily a\&b				&									\\
+		\cline{1-2}
+		11					&	\ttfamily a\^{}b			&									\\
+		\cline{1-2}
+		12					&	\ttfamily a|b				&									\\
+		\cline{1-2}
+		13					&	\ttfamily \&\&				&									\\
+		\cline{1-2}
+		14					&	\ttfamily ||				&									\\
+		\hline
+		\multirow{6}{*}{15}	&	\ttfamily a?b:c				&	\multirow{6}{*}{Right-to-left}	\\
+							&	\ttfamily throw				&									\\
+							&	\ttfamily =					&									\\
+							&	\ttfamily += -=	*= /= \%=	&									\\
+							&	\ttfamily <<= >>=			&									\\
+							&	\ttfamily \&= \^{}= |=		&									\\
+		\hline
+		16					&	\ttfamily ,					&	Left-to-right					\\
+		\hline
+	\end{tabular}
+\end{center}
+

@@ -1,0 +1,24 @@
+\paragraph{Mobius inversion formula}
+
+$$[x = 1] = \sum_{d|x}\mu(d)$$
+
+\paragraph{Gcd inversion}
+\begin{align*}
+\sum_{a=1}^n\sum_{b=1}^ngcd^2(a,b)&=\sum_{d=1}^nd^2\sum_{i=1}^{\floor{\frac{n}{d}}}\sum_{j=1}^{\floor{\frac{n}{d}}}[gcd(i,j)=1]\\
+&=\sum_{d=1}^nd^2\sum_{i=1}^{\floor{\frac{n}{d}}}\sum_{j=1}^{\floor{\frac{n}{d}}}\sum_{t|gcd(i,j)}\mu(t)\\
+&=\sum_{d=1}^nd^2\sum_{t=1}^{\floor{\frac{n}{d}}}\mu(t)\sum_{i=1}^{\floor{\frac{n}{d}}}[t|i]\sum_{j=1}^{\floor{\frac{n}{d}}}[t|j]\\
+&=\sum_{d=1}^nd^2\sum_{t=1}^{\floor{\frac{n}{d}}}\mu(t){\floor{\frac{n}{dt}}}^2
+\end{align*}
+
+The formula can be computed in $O(nlogn)$ complexity.
+
+Moreover, let $l=dt$, then
+
+\begin{align*}
+\sum_{d=1}^nd^2\sum_{t=1}^{\floor{\frac{n}{d}}}\mu(t){\floor{\frac{n}{dt}}}^2&=\sum_{l=1}^n{\floor{\frac{n}{l}}}^2\sum_{d|l}d^2\mu(\frac{l}{d})
+\end{align*}
+
+Let $f(l)=\sum_{d|l}d^2\mu(\frac{l}{d})$. It can be proven that $f(l)$ is multiplicative. Besides, $f(p^k)=p^{2k}-p^{2k-2}$.
+
+Therefore, with linear sieve the formula can be computed in $O(n)$ complexity.
+

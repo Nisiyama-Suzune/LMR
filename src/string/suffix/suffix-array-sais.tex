@@ -1,0 +1,9 @@
+Ensure that \texttt{str[n]} $\geq 0$ is the unique lexicographically smallest character in \texttt{str}.
+
+\begin{enumerate}
+\item \texttt{sa[i]}: The beginning position of the $i$-th smallest suffix. Note that \texttt{sa[0]=n}.
+\item \texttt{rk[i]}: The rank of the suffix beginning at position $i$.
+\item \texttt{ht[i]}: The longest common prefix of \texttt{sa[i]} and \texttt{sa[i - 1]}.
+\end{enumerate}
+
+\lstinputlisting{src/string/suffix/suffix-array-sais.cpp}

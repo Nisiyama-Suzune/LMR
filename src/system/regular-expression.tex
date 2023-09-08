@@ -1,0 +1,28 @@
+This is an example to construct a pattern:
+\begin{lstlisting}
+std::string str = ("The the there");
+std::regex pattern ("(th|Th)[\\w]*", std::regex_constants::optimize | std::regex_constants::ECMAScript);
+std::smatch match;	//std::cmatch for char *
+\end{lstlisting}
+
+Use \texttt{std::regex\_match} to find exact matches:
+\begin{lstlisting}
+std::regex_match (str, match, pattern);
+\end{lstlisting}
+
+Use \texttt{std::sregex\_iterator} to search for patterns:
+\begin{lstlisting}
+auto mbegin = std::sregex_iterator (str.begin (), str.end (), pattern);
+auto mend = std::sregex_iterator ();
+std::cout << "Found " << std::distance (mbegin, mend) << " words:\n";
+for (std::sregex_iterator i = mbegin; i != mend; ++i) {
+	match = *i; /*...*/ }
+\end{lstlisting}
+The whole match is in \texttt{match[0]}, and backreferences are in \texttt{match[i]} up to \texttt{match.size ()}. \texttt{match.prefix ()} and \texttt{match.suffix ()} give the prefix and the suffix. \texttt{match.length ()} gives length and \texttt{match.position ()} gives the position of the match.
+
+To replace a certain regular expression with another one, use \texttt{std::regex\_replace}.
+\begin{lstlisting}
+std::regex_replace (str, pattern, "sh");
+\end{lstlisting}
+where \texttt{\$n} is the backreference, \texttt{\$\&} is the entire match, \texttt{\$`} is the prefix, \texttt{\$'} is the suffix, \texttt{\$\$} is the \texttt{\$} sign.
+

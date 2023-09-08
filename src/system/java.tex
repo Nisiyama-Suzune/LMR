@@ -1,0 +1,198 @@
+\paragraph{Import}
+Libraries that are commonly used.
+\begin{lstlisting}[language=java]
+import java.io.*;
+import java.lang.*;
+import java.math.*;
+import java.util.*;
+\end{lstlisting}
+
+\paragraph{Input}
+\texttt{Scanner} is generally used to handle input.
+\begin{lstlisting}[language=java]
+Scanner in = new Scanner (System.in);
+\end{lstlisting}
+Or:
+\begin{lstlisting}[language=java]
+Scanner in = new Scanner (new BufferedInputStream (System.in));
+\end{lstlisting}
+Usage: \texttt{next + <typename> ()}, \texttt{hasNext + <typename> ()}.
+
+e.g. \texttt{in.nextInt ()}, \texttt{in.nextBigInteger ()}, \texttt{in.nextLine ()}, \texttt{in.hasNextInt ()}, etc.
+
+\paragraph{Output}
+Use \texttt{System.out} for output.
+\begin{lstlisting}[language=java]
+System.out.print (/*...*/);
+System.out.println (/*...*/);
+System.out.printf (/*...*/);
+\end{lstlisting}
+
+\paragraph{BigInteger}
+To convert to a \texttt{BigInteger}, use \texttt{BigInteger.valueOf (int)} or \texttt{BigInteger (String, radix)}.
+
+To convert from a \texttt{BigInteger}, use \texttt{.intValue ()}, \texttt{.longValue ()}, \texttt{.toString (radix)}.
+
+Common unary operations include \texttt{.abs ()}, \texttt{.negate ()}, \texttt{.not ()}.
+
+Common binary operations include \texttt{.max}, \texttt{.min}, \texttt{.add}, \texttt{.subtract}, \texttt{.multiply}, \texttt{.divide}, \texttt{.remainder}, \texttt{.gcd}, \texttt{.modInverse}, \texttt{.and}, \texttt{.or}, \texttt{.xor}, \texttt{.shiftLeft (int)}, \texttt{.shiftRight (int)}, \texttt{.pow (int)}, \texttt{.compareTo}.
+
+Divide and remainder: \texttt{Biginteger[] .divideAndRemainder (Biginteger val)}.
+
+Power module: \texttt{.modPow (BigInteger exponent, module)}.
+
+Primality check: \texttt{.isProbablePrime (int certainty)}.
+
+Square root:
+\begin{lstlisting}[language=java]
+public static BigInteger sqrt (BigInteger x) {
+	if (x.equals (BigInteger.ZERO) || x.equals (BigInteger.ONE)) return x;
+	BigInteger d = BigInteger.ZERO.setBit (x.bitLength () / 2);
+	BigInteger d2 = d;
+	for (; ; ) {
+		BigInteger y = d.add (x.divide (d)).shiftRight (1);
+		if (y.equals (d) || y.equals (d2)) return d.min (d2);
+		d2 = d; d = y; } }
+\end{lstlisting}
+
+\paragraph{BigDecimal}
+Literally a \texttt{BigInteger} and a scale.
+
+When rounding, it is necessary to specify a \texttt{RoundingMode}, namely \texttt{RoundingMode.<mode>}, which includes: 
+
+\texttt{CEILING}, \texttt{DOWN}, \texttt{FLOOR}, \texttt{HALF\_DOWN}, \texttt{HALF\_EVEN}, \texttt{HALF\_UP}, \texttt{UNNECESSARY}, \texttt{UP}.
+
+To convert to a \texttt{BigDecimal}, use \texttt{BigDecimal.valueOf (...)}, \texttt{BigDecimal (BigInteger, scale)} or \texttt{BigDecimal (String)}.
+
+To divide: \texttt{.divide (BigDecimal, scale, roundingmode)}.
+
+To set the scale: \texttt{.setScale (scale, roundingmode)}.
+
+To remove trailing zeroes: \texttt{.stripTrailingZeros ()}.
+
+\paragraph{Array}
+Sort: \texttt{Arrays.sort (T[] a);}
+
+\texttt{Arrays.sort (T[] a, int fromIndex, int toIndex);}
+
+\texttt{Arrays.sort (T[] a, int fromIndex, int toIndex, Comperator <? super T> comperator);}
+
+\paragraph{PriorityQueue}
+An implementation of a min-heap.
+
+Add element: \texttt{add (E)}.
+
+Retrieve and pop element: \texttt{poll ()}.
+
+Retrieve element: \texttt{peek ()}.
+
+Size: \texttt{size ()}.
+
+Clear: \texttt{clear ()}.
+
+Comparator: \texttt{PriorityQueue <E> (int initcap, Comparator <? super E> comparator)}
+
+\paragraph{TreeMap}
+An implementation of a map. The entry is named \texttt{Map.Entry <K, V>}.
+
+Retrieve key and value from an entry: \texttt{getKey}, \texttt{getValue ()}, \texttt{setValue (V)}.
+
+Retrieve entry: \texttt{ceilingEntry}, \texttt{floorEntry}, \texttt{higherEntry}, \texttt{lowerEntry}.
+
+Simplified operations: \texttt{clear ()}, \texttt{put (K, V)}, \texttt{get (K)}, \texttt{remove (K)}, \texttt{size ()}.
+
+Comparator: \texttt{TreeMap <K, V> (Comparator <? super K> comparator)}.
+
+\paragraph{StringBuilder}
+
+Construction: \texttt{StringBuilder (String)}.
+
+Insertion: \texttt{append (...)}, \texttt{insert (offset, ...)}. \texttt{...} can be almost every type!
+
+Fetch: \texttt{charAt (int)}.
+
+Modification: \texttt{setCharAt (int, char)}, \texttt{delete (int, int)}, \texttt{reverse ()}.
+
+Output: \texttt{length ()}, \texttt{toString ()}.
+
+\paragraph{String}
+Formatting: \texttt{String.format (String, ...)}.
+
+Case transform: \texttt{toLowerCase}, \texttt{toUpperCase}.
+
+\paragraph{Comparator}
+An example on a comparator.
+\begin{lstlisting}[language=java]
+public class Main {
+	public class Point {
+		public int x; public int y;
+		public Point () {
+			x = 0;
+			y = 0; }
+		public Point (int xx, int yy) {
+			x = xx;
+			y = yy; } }
+	public class Cmp implements Comparator <Point> {
+		public int compare (Point a, Point b) {
+			if (a.x < b.x) return -1;
+			if (a.x == b.x) {
+				if (a.y < b.y) return -1;
+				if (a.y == b.y) return 0; }
+			return 1; } }
+	public static void main (String [] args) {
+		Cmp c = new Cmp ();
+		TreeMap <Point, Point> t = new TreeMap <Point, Point> (c);
+		return; } }
+\end{lstlisting}
+
+\paragraph{Comparable}
+An example to implement \texttt{Comparable}.
+\begin{lstlisting}[language=java]
+public class Point implements Comparable <Point> {
+	public int x; public int y;
+	public Point () {
+		x = 0;
+		y = 0; }
+	public Point (int xx, int yy) {
+		x = xx;
+		y = yy; }
+	public int compareTo (Point p) {
+		if (x < p.x) return -1;
+		if (x == p.x) {
+			if (y < p.y) return -1;
+			if (y == p.y) return 0; }
+		return 1; }
+	public boolean equalTo (Point p) {
+		return (x == p.x && y == p.y); }
+	public int hashCode () {
+		return x + y; } }
+\end{lstlisting}
+
+\paragraph{Fast IO}
+A class for faster IO.
+\begin{lstlisting}[language=java]
+public class Main {
+	static class InputReader {
+		public BufferedReader reader;
+		public StringTokenizer tokenizer;
+		public InputReader (InputStream stream) {
+			reader = new BufferedReader (new InputStreamReader (stream), 32768);
+			tokenizer = null; }
+		public String next() {
+			while (tokenizer == null || !tokenizer.hasMoreTokens()) {
+				try {
+					String line = reader.readLine();
+					tokenizer = new StringTokenizer (line);
+				} catch (IOException e) {
+					throw new RuntimeException (e); } }
+			return tokenizer.nextToken(); }
+		public BigInteger nextBigInteger() {
+			return new BigInteger (next (), 10); /* radix */ }
+		public int nextInt() {
+			return Integer.parseInt (next()); }
+		public double nextDouble() {
+			return Double.parseDouble (next()); } }
+	public static void main (String[] args) {
+		InputReader in = new InputReader (System.in);
+	} }
+\end{lstlisting}

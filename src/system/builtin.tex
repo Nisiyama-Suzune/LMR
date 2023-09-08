@@ -1,0 +1,12 @@
+\setlist{nolistsep}
+\begin{enumerate}[noitemsep]
+\item \texttt{\_\_builtin\_clz}: Returns the number of leading 0-bits in x, starting at the most significant bit position. If x is 0, the result is undefined.
+\item \texttt{\_\_builtin\_ctz}: Returns the number of trailing 0-bits in x, starting at the least significant bit position. If x is 0, the result is undefined.
+\item \texttt{\_\_builtin\_clrsb}: Returns the number of leading redundant sign bits in x, i.e. the number of bits following the most significant bit that are identical to it. There are no special cases for 0 or other values.
+\item \texttt{\_\_builtin\_popcount}: Returns the number of 1-bits in x.
+\item \texttt{\_\_builtin\_parity}: Returns the parity of x, i.e. the number of 1-bits in x modulo 2.
+\item \texttt{\_\_builtin\_bswap16}, \texttt{\_\_builtin\_bswap32}, \texttt{\_\_builtin\_bswap64}: Returns x with the order of the bytes (8 bits as a group) reversed.
+\item \texttt{bitset::\_Find\_first(), bitset::\_Find\_next(idx)}: Finds \texttt{1} in a bitset.
+\item \texttt{roundq}: Rounds \texttt{\_\_float128}.
+\end{enumerate}
+
